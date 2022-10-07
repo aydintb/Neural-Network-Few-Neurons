@@ -33,16 +33,15 @@ namespace Neural_Network_Test
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            // clear canvas and draw a line
             CreateALine();
 
             Perceptrons.NeuralPerceptron neuron = new Perceptrons.NeuralPerceptron();
 
             neuron.setup();
-            neuron.train();
-            neuron.train();
-            neuron.train();
-            neuron.train();
-            neuron.train();
+
+            for (int i = 1; i < 100; i++)
+                neuron.train();
 
 
             neuron.results(canvas1);
@@ -51,9 +50,13 @@ namespace Neural_Network_Test
 
         }
 
+
+        Neural_Network_Test.Perceptrons.NeuralPerceptron np = new Neural_Network_Test.Perceptrons.NeuralPerceptron();
+        
         double f(double x)
         {
-            return 2 * x + 1;
+            return np.f(x);
+            //return 2 * x + 1;
         }
 
         public void CreateALine()
@@ -127,7 +130,7 @@ namespace Neural_Network_Test
 
         private void LoadDataResult()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\dataR.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\dataR.dat");
 
             // create a second float array and copy the bytes into it...
             train_data_answer = new float[50000];
@@ -136,7 +139,7 @@ namespace Neural_Network_Test
 
         private void LoadData()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\data.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\data.dat");
             // create a second float array and copy the bytes into it...
             train_data = new float[50000, 784];
             Buffer.BlockCopy(fileBytes, 0, train_data, 0, fileBytes.Length);
@@ -169,7 +172,7 @@ namespace Neural_Network_Test
 
         private void LoadTestResult()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\testR.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\testR.dat");
 
             // create a second float array and copy the bytes into it...
             test_data_answer = new float[10000];
@@ -178,7 +181,7 @@ namespace Neural_Network_Test
 
         private void LoadTestData()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\test.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\test.dat");
             // create a second float array and copy the bytes into it...
             test_data = new float[10000, 784];
             Buffer.BlockCopy(fileBytes, 0, test_data, 0, fileBytes.Length);
@@ -186,7 +189,7 @@ namespace Neural_Network_Test
 
         private void LoadValResult()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\valR.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\valR.dat");
 
             // create a second float array and copy the bytes into it...
             val_data_answer = new float[10000];
@@ -195,7 +198,7 @@ namespace Neural_Network_Test
 
         private void LoadValData()
         {
-            byte[] fileBytes = File.ReadAllBytes(@"C:\PythonProjects\mnist\val.dat");
+            byte[] fileBytes = File.ReadAllBytes(@"C:\Users\Aydin\Desktop\Desktop\Machine Learning Course\mnist\val.dat");
             // create a second float array and copy the bytes into it...
             val_data = new float[10000, 784];
             Buffer.BlockCopy(fileBytes, 0, val_data, 0, fileBytes.Length);

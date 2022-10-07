@@ -38,7 +38,6 @@ namespace Neural_Network_Test
                 weights = new double[n];
                 for (int i = 0; i < weights.Length; i++)
                     weights[i] = new RND().random(-1.0, 1.0);
-
             }
 
             public int feedforward(double[] inputs)
@@ -96,9 +95,9 @@ namespace Neural_Network_Test
             //
             Trainer[] training = new Trainer[10000];
 
-            double f(double x)
+            public double f(double x)
             {
-                return 2 * x + 1;
+                return (2 * x) + 1;
             }
 
             public void setup()
