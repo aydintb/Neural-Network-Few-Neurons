@@ -162,7 +162,9 @@ namespace Neural_Network_Test
                 // calculated in train
                 //double this.output = feedforward(this.inputs);
                 //double this.sigmoid_output = sigmoid(output);
-                //              
+                //            
+                // learning rate ile delta carpimi extra bir degisken tanimlanabilir.
+                // delta durmak zorunda, backprop icin.  belki de learning rateli version da backprop yapilabilir.
                 double delta = (sigmoid_output - desired) * sigmoid_prime(output);
                 //
                 double[] nabla_w = new double[inputs.Count()];
@@ -184,6 +186,7 @@ namespace Neural_Network_Test
 
             }
 
+            // sonraki neurondan geldigi icin "prev"  (callback func)
             private void backprop(double prev_delta, double prev_weight)
             {
                 //double error = guess - errorrate * neuron_output;
